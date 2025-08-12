@@ -1,0 +1,26 @@
+"use client"
+// Remember you must use an AuthProvider for 
+// client components to useSession
+
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation"; 
+import UserCard from "../components/UserCard";
+
+
+export default function ClientPage() {
+    const {data: session} = useSession({
+        required: true,
+        onUnauthenticated() {
+            redirect("/api/auth/signin?callbackUrl=/client")
+        },
+    });
+
+   if (!session?.user) return null;
+
+
+    return (
+        <section className="flex flex-col items-center p-6 bg-white rounded-lg font-bold text-5xl text-black">
+           <UserCard user={session?.user} pagetype="Client" />
+        </section>
+    )
+}
