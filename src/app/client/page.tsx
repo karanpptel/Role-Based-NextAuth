@@ -15,6 +15,10 @@ export default function ClientPage() {
         },
     });
 
+    // if (session?.user.role !== "admin" && session?.user.role !== "manager") {
+    //     return <h1>Access Denied</h1>
+    // }
+
    if (!session?.user) return null;
 
 

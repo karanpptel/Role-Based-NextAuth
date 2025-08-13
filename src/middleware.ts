@@ -13,7 +13,7 @@ export default withAuth(
             return NextResponse.rewrite(
                 new URL("/denied", request.url)
             )
-        }
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
         if (request.nextUrl.pathname.startsWith("/client")
             && request.nextauth.token?.role !== "admin"
@@ -25,7 +25,7 @@ export default withAuth(
     },
     {
         callbacks: {
-            authorized: ({ token }) => !!token
+            authorized: ({ token }) => !!token // here we use authorize as on and off switch, it return true if we're admin  and false if we're not 
         },
     }
 )
